@@ -63,6 +63,8 @@
     <button type="button" data-doc="privacy" class="active" lang-content data-lang-for="en">Privacy Policy</button>
     <button type="button" data-doc="terms" lang-content data-lang-for="ro">Termeni de utilizare</button>
     <button type="button" data-doc="terms" lang-content data-lang-for="en">Terms of Use</button>
+    <button type="button" data-doc="deletion" lang-content data-lang-for="ro">Ștergerea contului</button>
+    <button type="button" data-doc="deletion" lang-content data-lang-for="en">Account Deletion</button>
   </div>
 
   <div lang-content data-lang-for="ro" class="active">
@@ -124,6 +126,46 @@
     <div class="item"><h2>Changes to these Terms</h2><p>These terms may change as the app develops. Continued use after a change means you accept the updated terms. Material changes affecting how we process your personal data will ask for renewed consent where required by law.</p></div>
   </section>
 
+  <!-- ROMANIAN — DELETION -->
+  <section class="doc" data-doc="deletion" lang-content data-lang-for="ro">
+    <div class="item">
+      <h2>Din aplicație (recomandat, imediat)</h2>
+      <p>Deschide aplicația poll.ro → Profil → „Șterge contul”. Confirmă, iar contul, voturile, sesizările și token-urile de notificare push sunt șterse imediat și definitiv. Nu este nevoie de nimic altceva — nu se trimite niciun e-mail de confirmare, ștergerea are loc pe loc.</p>
+    </div>
+    <div class="item">
+      <h2>Fără acces la aplicație</h2>
+      <p>Dacă nu mai ai acces la aplicație (dispozitiv pierdut, cont Google/Apple inaccesibil etc.), trimite un e-mail la <strong>raul.balmez@gmail.com</strong> de la adresa de e-mail asociată contului tău, cu subiectul „Ștergere cont poll.ro”. Vom șterge manual contul și toate datele asociate în cel mult 30 de zile și îți vom confirma prin e-mail.</p>
+    </div>
+    <div class="item">
+      <h2>Ce se șterge</h2>
+      <p>Profilul tău (email, nume, gen, grupă de vârstă, preferințe), toate voturile tale, sesizările trimise și token-urile de notificare push. Ștergerea este permanentă și nu poate fi anulată. Sondajele pe care le-ai putea fi creat ca administrator nu sunt afectate.</p>
+    </div>
+    <div class="item">
+      <h2>Ștergere parțială</h2>
+      <p>În acest moment nu oferim ștergerea selectivă a unor date individuale (de exemplu doar istoricul de vot) fără ștergerea completă a contului — vezi Politica de confidențialitate pentru drepturile tale complete, inclusiv exportul datelor înainte de ștergere.</p>
+    </div>
+  </section>
+
+  <!-- ENGLISH — DELETION -->
+  <section class="doc" data-doc="deletion" lang-content data-lang-for="en">
+    <div class="item">
+      <h2>From the app (recommended, immediate)</h2>
+      <p>Open the poll.ro app → Profile → "Delete account". Confirm, and your account, votes, reports, and push notification tokens are deleted immediately and permanently. Nothing else is needed — no confirmation email is sent, deletion happens on the spot.</p>
+    </div>
+    <div class="item">
+      <h2>Without access to the app</h2>
+      <p>If you no longer have access to the app (lost device, inaccessible Google/Apple account, etc.), email <strong>raul.balmez@gmail.com</strong> from the email address associated with your account, with the subject "poll.ro account deletion". We will manually delete the account and all associated data within 30 days and confirm by email.</p>
+    </div>
+    <div class="item">
+      <h2>What gets deleted</h2>
+      <p>Your profile (email, name, gender, age bracket, preferences), all of your votes, submitted reports, and push notification tokens. Deletion is permanent and cannot be undone. Any polls you may have created as an admin are not affected.</p>
+    </div>
+    <div class="item">
+      <h2>Partial deletion</h2>
+      <p>We don't currently offer deleting individual pieces of data (e.g. just your voting history) without deleting the whole account — see the Privacy Policy for your full rights, including exporting your data before deletion.</p>
+    </div>
+  </section>
+
   <footer>
     Contact: <strong>raul.balmez@gmail.com</strong>
   </footer>
@@ -131,7 +173,7 @@
 
 <script>
   var lang = 'ro';
-  var doc = location.hash === '#terms' ? 'terms' : 'privacy';
+  var doc = location.hash === '#terms' ? 'terms' : location.hash === '#deletion' ? 'deletion' : 'privacy';
 
   function render() {
     document.querySelectorAll('.lang-switch button').forEach(function (b) {
@@ -154,7 +196,7 @@
   document.querySelectorAll('.doc-switch button').forEach(function (b) {
     b.addEventListener('click', function () {
       doc = b.dataset.doc;
-      history.replaceState(null, '', doc === 'terms' ? '#terms' : '#privacy');
+      history.replaceState(null, '', '#' + doc);
       render();
     });
   });
